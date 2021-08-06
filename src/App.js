@@ -1,12 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
-import Header from './Header';
+import Content from './components/Content';
+import Header from './components/Header';
+import Menu from './components/Menu';
+
 
 function App() {
   return (
     <div className="App">
-      New Project zrastye!
-      <Header />
+      <div className="wrapper">
+        <Header />
+        <Menu />
+        <Content />
+      </div>
     </div>
   );
 }
