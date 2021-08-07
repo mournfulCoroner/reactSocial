@@ -28,6 +28,18 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+    text-decoration: none;
+  }
+
+  a.active_block{
+    color: white;
+  }
+  .menu_block.active_block{
+    color: white;
+  }
+  
+  .active_block{
+    color: white;
   }
 
   @media (max-width: 900px){
