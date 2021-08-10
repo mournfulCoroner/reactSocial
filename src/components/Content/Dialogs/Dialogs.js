@@ -4,8 +4,7 @@ import Contact from './Contact/Contact';
 import Message from './Message/Message';
 
 const Dialogs = (props) => {
-
-    let messages = props.state.messages.map((mes) => <Message key={mes.id} id={mes.id} message_text={mes.message_text} />)
+    let messages = props.state.messages.map((mes) => <Message key={mes.id} id={mes.id} message_text={mes.message_text} self={mes.self} />)
     let contacts = props.state.contacts.map((contact) => <Contact key={contact.id} id={contact.id} username={contact.username}  />)
     return (
         <div className={style.dialogs}>

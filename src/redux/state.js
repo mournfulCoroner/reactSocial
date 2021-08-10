@@ -31,11 +31,30 @@ let state = {
         messages: [
             {
                 id: 1,
-                message_text: 'Сообщение 1'
+                message_text: 'Сообщение 1',
+                self: false
             },
             {
                 id: 2,
-                message_text: 'Сообщение 2'
+                message_text: 'Сообщение 2',
+                self: false
+            },
+            {
+                id: 3,
+                message_text: 'Ответ',
+                self: true
+            }
+        ]
+    },
+    friendsBar: {
+        friends: [
+            {
+                id: 1,
+                friend_name: 'Константин'
+            },
+            {
+                id: 2,
+                friend_name: 'Олеся'
             }
         ]
     }

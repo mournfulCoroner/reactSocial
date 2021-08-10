@@ -2,7 +2,6 @@ import Post from './Post/Post';
 import style from './Wall.module.css';
 
 function Wall(props) {
-    debugger;
     let posts = props.posts.map(post => <Post key={post.id} post_text={post.post_text} likes={post.likes}/>)
     return (
         <div className={style.wall}>

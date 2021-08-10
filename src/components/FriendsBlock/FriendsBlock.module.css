@@ -1,0 +1,42 @@
+.fblock{
+    grid-area: fblock;
+    background-color: #b8cbb8;
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    height: 270px;
+    margin-top: 240px;
+}
+
+.fblock__friends{
+    display: flex;
+    padding-top: 10px;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+}
+
+.friend_pile{
+    display: flex;
+    flex-direction: column;
+    margin: 7px 0;
+    align-items: center;
+}
+
+.friend_pile__avatar{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+}
+
+.friend_pile__name{
+    margin: 7px 0 0 0;
+    font-size: smaller;
+}
+
+.ftitle{
+    margin: 5px 1px 3px 1px;
+}
