@@ -3,14 +3,12 @@ import style from './Content.module.css';
 import Dialogs from './Dialogs/Dialogs';
 import Profile from './Profile/Profile';
 
-function Content() {
+function Content(props) {
     return (
-
         <div className={style.content}>
-            <Route path='/profile' component={Profile}></Route>
-            <Route path='/messages' component={Dialogs}></Route>
+            <Route path='/profile' render={() => <Profile state={props.state.profile} />}></Route>
+            <Route path='/messages' render={() => <Dialogs state={props.state.dialogs} />}></Route>
         </div>
-
     );
 }
 

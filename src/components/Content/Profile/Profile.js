@@ -1,16 +1,16 @@
 import style from './Profile.module.css';
-import Profile_header from './Profile_header/Profile_header';
+import ProfileHeader from './ProfileHeader/ProfileHeader';
 import Wall from './Wall/Wall';
 
-function Profile() {
+function Profile(props) {
     return (
         <div className={style.profile}>
             <div className={style.back_profile}>
-                <img src='https://st.depositphotos.com/1006076/3995/i/600/depositphotos_39951147-stock-photo-spring-landscape-watercolor-flowering-trees.jpg'></img>
+                <img alt='' src='https://st.depositphotos.com/1006076/3995/i/600/depositphotos_39951147-stock-photo-spring-landscape-watercolor-flowering-trees.jpg'></img>
             </div>
-            <Profile_header />
+            <ProfileHeader />
             <div className={style.description}>О себе ничего пока сказать не могу. Посмотрим, что будет дальше.</div>
-            <Wall />
+            <Wall posts={props.state.posts}/>
         </div>
     );
 }

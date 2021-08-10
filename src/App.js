@@ -5,17 +5,17 @@ import Header from './components/Header/Header.js'
 import Menu from './components/Menu/Menu';
 
 
-function App() {
+function App(props) {
   return (
-    <div className="App">
-      <div className="wrapper">
-        <BrowserRouter>
+    <BrowserRouter>
+      <div className="App">
+        <div className="wrapper">
           <Header />
           <Menu />
-          <Content />
-        </BrowserRouter>
+          <Content state={props.state}/>
+        </div>
       </div>
-    </div>
+    </BrowserRouter>
   );
 }
 

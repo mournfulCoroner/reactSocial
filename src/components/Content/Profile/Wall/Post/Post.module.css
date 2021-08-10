@@ -1,8 +1,8 @@
 .post{
-    margin: 50px 40px;
+    margin: 35px 40px;
     background-color: rgb(239, 239, 239);
     border-radius: 100px;
-    padding: 25px;
+    padding: 20px;
     display: flex;
     align-items: center;
     flex-direction: column;
