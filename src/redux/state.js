@@ -1,3 +1,5 @@
+import renderAll from "../render";
+
 let state = {
     profile: {
         posts: [
@@ -60,4 +62,15 @@ let state = {
     }
 }
 
+let addPost = (textPost) => {
+    let post = {
+        id: 6,
+        post_text: textPost,
+        likes: 0
+    }
+    state.profile.posts.push(post);
+    renderAll(state);
+}
+
+export { addPost};
 export default state;

@@ -1,14 +1,33 @@
 .fblock{
     grid-area: fblock;
+    margin-top: 240px;
+}
+
+
+.fblock__open{
     background-color: #b8cbb8;
     display: flex;
     justify-content: flex-start;
-    padding: 10px;
     flex-direction: column;
     align-items: center;
     position: fixed;
-    height: 270px;
-    margin-top: 240px;
+    height: auto;
+    padding: 10px;
+}
+
+.fblock__open.active{
+    transform: scaleX(1);
+}
+
+.fblock__button{
+    background: url(./double-right.png) no-repeat center center;
+}
+
+.fblock__close{
+    align-items: center;
+    position: fixed;
+    background-color: #b8cbb8;
+    padding: 10px;
 }
 
 .fblock__friends{
@@ -39,4 +58,5 @@
 
 .ftitle{
     margin: 5px 1px 3px 1px;
+    padding-left: 15%;
 }

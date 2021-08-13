@@ -14,7 +14,7 @@ function App(props) {
           <Header />
           <FriendsBlock state={props.state.friendsBar}/>
           <Menu />
-          <Content state={props.state}/>
+          <Content state={props.state} addPost={props.addPost}/>
         </div>
       </div>
     </BrowserRouter>

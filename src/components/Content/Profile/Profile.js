@@ -10,7 +10,7 @@ function Profile(props) {
             </div>
             <ProfileHeader />
             <div className={style.description}>О себе ничего пока сказать не могу. Посмотрим, что будет дальше.</div>
-            <Wall posts={props.state.posts}/>
+            <Wall posts={props.state.posts} addPost={props.addPost}/>
         </div>
     );
 }
