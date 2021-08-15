@@ -1,6 +1,6 @@
 import style from './Profile.module.css';
 import ProfileHeader from './ProfileHeader/ProfileHeader';
-import Wall from './Wall/Wall';
+import WallContainer from './Wall/WallContainer';
 
 function Profile(props) {
     return (
@@ -10,7 +10,7 @@ function Profile(props) {
             </div>
             <ProfileHeader />
             <div className={style.description}>О себе ничего пока сказать не могу. Посмотрим, что будет дальше.</div>
-            <Wall posts={props.state.posts} addPost={props.addPost}/>
+            <WallContainer store={props.store}/>
         </div>
     );
 }

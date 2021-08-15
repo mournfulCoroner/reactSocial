@@ -4,13 +4,16 @@ import Contact from './Contact/Contact';
 import Message from './Message/Message';
 
 const Dialogs = (props) => {
-    let messages = props.state.messages.map((mes) => <Message key={mes.id} id={mes.id} message_text={mes.message_text} self={mes.self} />)
-    let contacts = props.state.contacts.map((contact) => <Contact key={contact.id} id={contact.id} username={contact.username}  />)
-    let activeTextMessage = React.createRef();
+    let messages = props.messages.map((mes) => <Message key={mes.id} id={mes.id} message_text={mes.message_text} self={mes.self} />)
+    let contacts = props.contacts.map((contact) => <Contact key={contact.id} id={contact.id} username={contact.username}  />)
 
     let submitMessage = () => {
-        let text = activeTextMessage.current.value;
-        alert(text);
+        props.addMessage();
+    }
+
+    let onChangeNewMessage = (e) => {
+        let text = e.target.value;
+        props.updateNewMessageText(text);
     }
     
     return (
@@ -27,7 +30,7 @@ const Dialogs = (props) => {
                 }
                 </div>
                 <div className={style.messages_block__submit_area}>
-                    <textarea ref={activeTextMessage} className={style.messages_block__submit_text} placeholder='Введите сообщение'></textarea>
+                    <textarea onChange={ onChangeNewMessage } value={props.newMessageText} className={style.messages_block__submit_text} placeholder='Введите сообщение'></textarea>
                     <button onClick={ submitMessage } className={style.messages_block__submit_button}>Отправить</button>
                 </div>
             </div>

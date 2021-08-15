@@ -1,4 +1,3 @@
-import { render } from '@testing-library/react';
 import FriendPile from './FriendPile/FriendPile';
 import style from './FriendsBlock.module.css';
 
@@ -6,9 +5,9 @@ import style from './FriendsBlock.module.css';
 const FriendsBlock = (props) => {
     let friends = props.state.friends.map((friend) => <FriendPile key={friend.id} id={friend.id} friend_name={friend.friend_name} />);
     
-    let open_friends = () => {
-        stateFr = !stateFr;
-    }
+    // let open_friends = () => {
+    //     stateFr = !stateFr;
+    // }
     
     let stateFr = false;
     
