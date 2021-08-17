@@ -3,7 +3,7 @@ import style from './FriendsBlock.module.css';
 
 
 const FriendsBlock = (props) => {
-    let friends = props.state.friends.map((friend) => <FriendPile key={friend.id} id={friend.id} friend_name={friend.friend_name} />);
+    let friends = props.friendBar.friends.map((friend) => <FriendPile key={friend.id} id={friend.id} friend_name={friend.friend_name} />);
     
     // let open_friends = () => {
     //     stateFr = !stateFr;

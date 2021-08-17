@@ -1,0 +1,62 @@
+.users_wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 1em;
+    row-gap: 1em;
+}
+
+.avatar{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    margin: 10px 0;
+}
+
+.userPile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #b8cbb850;
+    border-radius: 10px;
+    padding:10px;
+    margin-top: 20px;
+}
+
+.status_block{
+    font-size: 80%;
+    margin: 10px 0;
+    padding: 5px;
+    border-radius: 5px;
+    width: 100%;
+    text-align: center;
+    font-weight: normal;
+
+}
+
+.follow_button{
+    border: none;
+    padding: 5px;
+    background-color: #B0CBCA60;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.unfollow_button{
+    border: none;
+    padding: 5px;
+    background-color: #C3B0CB60;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@media (max-width: 920px) {
+    .users_wrapper {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+}
+@media (max-width: 660px){
+    .users_wrapper {
+        grid-template-columns: 1fr;
+    }
+}

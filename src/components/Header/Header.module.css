@@ -7,11 +7,19 @@ header{
     top: 0;
     height: 55px;
     background-color: #b8cbb8;
+    display: grid;
+    align-items: center;
   }
 
 .header_block{
     position: absolute;
     margin-left: 25px;
-    margin-top: 15px;
     font-size: larger;
+}
+
+.header_link{
+  float: right;
+  text-decoration: none;
+  cursor: pointer;
+  margin-right: 25px;
 }
