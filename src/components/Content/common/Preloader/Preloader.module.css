@@ -1,0 +1,13 @@
+.fetch_wrapper{
+    height: 200px;
+    width: 200px;
+    align-items: center;
+    display: flex;
+    margin: auto;
+}
+.fetching{
+    margin: auto;
+    height: 40px;
+    width: 40px;
+}
+

@@ -11,6 +11,11 @@ header{
     align-items: center;
   }
 
+header a{
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .header_block{
     position: absolute;
     margin-left: 25px;
@@ -19,7 +24,5 @@ header{
 
 .header_link{
   float: right;
-  text-decoration: none;
-  cursor: pointer;
   margin-right: 25px;
 }

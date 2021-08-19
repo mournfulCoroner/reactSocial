@@ -4,10 +4,13 @@
     column-gap: 1em;
     row-gap: 1em;
     margin-bottom: 20px;
+    max-width: 38em;
+    margin: auto;
 }
 
 .page_users_wrapper{
     display: grid;
+    padding: 15px 0;
 }
 
 .avatar{
@@ -25,6 +28,7 @@
     border-radius: 10px;
     padding:10px;
     margin-top: 20px;
+    max-height: 200px;
 }
 
 .status_block{
@@ -35,7 +39,7 @@
     width: 100%;
     text-align: center;
     font-weight: normal;
-
+    overflow-y: auto;
 }
 
 .follow_button{

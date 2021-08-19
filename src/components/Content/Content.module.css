@@ -4,4 +4,5 @@
     justify-content: center;
     grid-area: cont;
     align-items: center;
+    padding: 0 40px;
   }
