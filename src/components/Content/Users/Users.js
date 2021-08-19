@@ -1,22 +1,38 @@
+import styles from './Users.module.css'
+import basePhoto from './../../../assets/images/achhi.jpg'
 import UserPile from './UserPile/UserPile';
-import style from './Users.module.css'
 
-const Users = (props) => {
 
-    debugger;
-    if(props.users.length === 0){
-        props.setUsers([{id: 1, avatar:'http://pm1.narvii.com/6753/c4eb6e88ad361c046084f830244dde469cd458ccv2_00.jpg', fullName: 'Алексей', status: 'Hello there!', isFollow: true},
-        {id: 2, avatar:'http://pm1.narvii.com/6753/c4eb6e88ad361c046084f830244dde469cd458ccv2_00.jpg', fullName: 'Катя', status: 'Блистай!', isFollow: false},
-        {id: 3, avatar:'http://pm1.narvii.com/6753/c4eb6e88ad361c046084f830244dde469cd458ccv2_00.jpg', fullName: 'Малина', status: 'Eat me', isFollow: false},
-        {id: 4, avatar:'http://pm1.narvii.com/6753/c4eb6e88ad361c046084f830244dde469cd458ccv2_00.jpg', fullName: 'Константин', status:'Йо йо йо', isFollow: true}])
+let Users = (props) => {
+    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
+
+    let pages = [];
+    for (let i = 1; i <= pagesCount; i++) {
+        pages.push(i);
     }
 
-    let users = props.users.map((user) => <UserPile key={user.id} id={user.id}
-    userName={user.fullName} status={user.status} isFollow={user.isFollow}
-    follow={props.followUser} avatar={user.avatar} />)
+    let getUsers = () => {
+        let users = props.users.map((user) => <UserPile key={user.id} id={user.id}
+            userName={user.name} status={user.status} isFollow={user.followed}
+            follow={props.followUser} avatar={
+                user.photos.small != null ? user.photos.small : basePhoto} />)
+        return users;
+    }
+
     return (
-        <div className={style.users_wrapper}>
-            {users}
+        <div className={styles.page_users_wrapper}>
+            <div className={styles.pages}>
+                {
+                    pages.map((page) => {
+                        return (<span className={props.activePage === page ? styles.active_page : styles.inactive_page}
+                            onClick={() => (props.onPageChange(page))}>
+                            {page}</span>)
+                    })
+                }
+            </div>
+            <div className={styles.users_wrapper}>
+                {getUsers()}
+            </div>
         </div>
     )
 }

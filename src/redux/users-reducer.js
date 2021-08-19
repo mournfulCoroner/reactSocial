@@ -1,15 +1,16 @@
 
 const FOLLOW = 'FOLLOW';
 const SET_USERS = 'SET_USERS';
+const SET_ACTIVE_PAGE = 'SET_ACTIVE_PAGE';
+const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
 
 
 let initialState = {
     users: [
-        // {id: 1, avatar:'http://pm1.narvii.com/6753/c4eb6e88ad361c046084f830244dde469cd458ccv2_00.jpg', fullName: 'Алексей', status: 'Hello there!', isFollow: true},
-        // {id: 2, avatar:'http://pm1.narvii.com/6753/c4eb6e88ad361c046084f830244dde469cd458ccv2_00.jpg', fullName: 'Катя', status: 'Блистай!', isFollow: false},
-        // {id: 3, avatar:'http://pm1.narvii.com/6753/c4eb6e88ad361c046084f830244dde469cd458ccv2_00.jpg', fullName: 'Малина', status: 'Eat me', isFollow: false},
-        // {id: 4, avatar:'http://pm1.narvii.com/6753/c4eb6e88ad361c046084f830244dde469cd458ccv2_00.jpg', fullName: 'Константин', status:'Йо йо йо', isFollow: true}
-    ]
+    ],
+    pageSize: 9,
+    totalUsersCount: 0,
+    activePage: 1
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -29,6 +30,11 @@ const usersReducer = (state = initialState, action) => {
         case SET_USERS:
             return {...state, users: action.users}
 
+        case SET_ACTIVE_PAGE:
+            return {...state, activePage: action.activePage}
+
+        case SET_TOTAL_USERS_COUNT:
+            return {...state, totalUsersCount: action.totalCount}
         default:
             return state;
     }
@@ -37,6 +43,8 @@ const usersReducer = (state = initialState, action) => {
 
 export const followAction = (userId) => ({type: FOLLOW, userId});
 export const setUsersAction = (users) => ({type: SET_USERS, users});
+export const setActivePageAction = (activePage) => ({type: SET_ACTIVE_PAGE, activePage});
+export const setTotalUsersCountAction = (totalCount) => ({type: SET_TOTAL_USERS_COUNT, totalCount});
 
 
 export default usersReducer;

@@ -3,6 +3,11 @@
     grid-template-columns: 1fr 1fr 1fr;
     column-gap: 1em;
     row-gap: 1em;
+    margin-bottom: 20px;
+}
+
+.page_users_wrapper{
+    display: grid;
 }
 
 .avatar{
@@ -49,14 +54,34 @@
     cursor: pointer;
 }
 
-@media (max-width: 920px) {
+.pages{
+    margin: 10px;
+    text-align: center;
+    overflow-x: auto;
+}
+
+.active_page{
+    font-weight: bold;
+    cursor: default;
+    padding-right: 7px;
+}
+
+.inactive_page{
+    font-weight: normal;
+    cursor: pointer;
+    padding-right: 7px;
+}
+
+@media (max-width: 750px) and (min-width: 540px) {
     .users_wrapper {
         grid-template-columns: 1fr 1fr;
     }
+
     
 }
-@media (max-width: 660px){
+@media (max-width: 539px){
     .users_wrapper {
         grid-template-columns: 1fr;
     }
+
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './Dialogs.module.css'
+import styles from './Dialogs.module.css'
 import Contact from './Contact/Contact';
 import Message from './Message/Message';
 
@@ -17,21 +17,21 @@ const Dialogs = (props) => {
     }
     
     return (
-        <div className={style.dialogs}>
-            <div className={style.dialogs_list}>
+        <div className={styles.dialogs}>
+            <div className={styles.dialogs_list}>
                 {
                     contacts
                 }
             </div>
-            <div className={style.messages_block}>
-                <div className={style.messages_block__messages}>
+            <div className={styles.messages_block}>
+                <div className={styles.messages_block__messages}>
                 {
                     messages
                 }
                 </div>
-                <div className={style.messages_block__submit_area}>
-                    <textarea onChange={ onChangeNewMessage } value={props.dialogs.newMessageText} className={style.messages_block__submit_text} placeholder='Введите сообщение'></textarea>
-                    <button onClick={ submitMessage } className={style.messages_block__submit_button}>Отправить</button>
+                <div className={styles.messages_block__submit_area}>
+                    <textarea onChange={ onChangeNewMessage } value={props.dialogs.newMessageText} className={styles.messages_block__submit_text} placeholder='Введите сообщение'></textarea>
+                    <button onClick={ submitMessage } className={styles.messages_block__submit_button}>Отправить</button>
                 </div>
             </div>
         </div>
