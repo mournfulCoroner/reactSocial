@@ -15,7 +15,8 @@ let Users = (props) => {
     let users = props.users.map((user) => <UserPile key={user.id} id={user.id}
         userName={user.name} status={user.status} isFollow={user.followed}
         followUser={props.followUser} avatar={
-            user.photos.small != null ? user.photos.small : basePhoto} />)
+            user.photos.small != null ? user.photos.small : basePhoto}
+            isFollowingProgress={props.isFollowingProgress} toggleIsFollowingProgress={props.toggleIsFollowingProgress} />)
 
             
     return (

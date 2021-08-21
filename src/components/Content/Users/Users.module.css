@@ -1,4 +1,4 @@
-.users_wrapper{
+.users_wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     column-gap: 1em;
@@ -8,30 +8,30 @@
     margin: auto;
 }
 
-.page_users_wrapper{
+.page_users_wrapper {
     display: grid;
     padding: 15px 0;
 }
 
-.avatar{
+.avatar {
     width: 50px;
     height: 50px;
     border-radius: 100%;
     margin: 10px 0;
 }
 
-.userPile{
+.userPile {
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: #b8cbb850;
     border-radius: 10px;
-    padding:10px;
+    padding: 10px;
     margin-top: 20px;
     max-height: 200px;
 }
 
-.status_block{
+.status_block {
     font-size: 80%;
     margin: 10px 0;
     padding: 5px;
@@ -40,52 +40,59 @@
     text-align: center;
     font-weight: normal;
     overflow-y: auto;
+    max-width: fit-content;
+    word-break: break-all;
 }
 
-.follow_button{
+.userPile button {
     border: none;
     padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.userPile button:disabled{
+    color: gray;
+}
+
+.follow_button {
     background-color: #B0CBCA60;
-    border-radius: 5px;
-    cursor: pointer;
 }
 
-.unfollow_button{
-    border: none;
-    padding: 5px;
+.unfollow_button {
     background-color: #C3B0CB60;
-    border-radius: 5px;
-    cursor: pointer;
 }
 
-.pages{
+.pages {
     margin: 10px;
     text-align: center;
     overflow-x: auto;
 }
 
-.active_page{
+.active_page {
     font-weight: bold;
     cursor: default;
     padding-right: 7px;
 }
 
-.inactive_page{
+.inactive_page {
     font-weight: normal;
     cursor: pointer;
     padding-right: 7px;
+}
+
+.userName_block{
+    text-align: center;
 }
 
 @media (max-width: 750px) and (min-width: 540px) {
     .users_wrapper {
         grid-template-columns: 1fr 1fr;
     }
-
-    
 }
-@media (max-width: 539px){
+
+@media (max-width: 539px) {
     .users_wrapper {
         grid-template-columns: 1fr;
     }
-
 }

@@ -20,7 +20,7 @@
     height: 50px;
     font-size: x-large;
     text-align: center;
-    background-color: #b8cbb8;
+    background-color: var(--main-color);
     display: flex;
     align-items: center;
     justify-content: space-around;
