@@ -4,12 +4,28 @@
     min-width: 40em;
 }
 
+.profile_status{
+    display: flex;
+}
+
 .description{
     margin: 8px 20px;
     background-color: #b8cbb850;
     padding: 25px;
     border-radius: 10px;
     text-align: center;
+    flex-grow: 1;
+}
+
+.description_input{
+    margin: 8px 20px;
+    padding: 18px;
+    border: solid 1px var(--main-color);
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    flex-grow: 1;
+    outline: none;
 }
 
 .back_profile{

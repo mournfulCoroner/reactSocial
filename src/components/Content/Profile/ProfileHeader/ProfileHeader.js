@@ -1,4 +1,5 @@
 import Preloader from '../../common/Preloader/Preloader';
+import ProfileStatus from './PorfileStatus';
 import styles from './ProfileHeader.module.css';
 
 function ProfileHeader(props) {
@@ -6,7 +7,7 @@ function ProfileHeader(props) {
     if(!props.user){
         return <Preloader />
     }
-  
+
     return (
         <div>
             <div className={styles.back_profile}>
@@ -18,7 +19,7 @@ function ProfileHeader(props) {
                 <img alt='' src={props.user.photos.small || 'https://pm1.narvii.com/6526/3c85b728f80710521171197855342fd1d88876fb_hq.jpg'}></img>
             </div>
             </div>
-            {props.user.aboutMe && <div className={styles.description}>{props.user.aboutMe}</div>}
+            <ProfileStatus aboutMe={props.user.aboutMe}/>
         </div>
     );
 }
