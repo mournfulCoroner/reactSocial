@@ -19,7 +19,7 @@ function ProfileHeader(props) {
                 <img alt='' src={props.user.photos.small || 'https://pm1.narvii.com/6526/3c85b728f80710521171197855342fd1d88876fb_hq.jpg'}></img>
             </div>
             </div>
-            <ProfileStatus aboutMe={props.user.aboutMe}/>
+            <ProfileStatus status={props.status} updateUserStatus={props.updateUserStatus}/>
         </div>
     );
 }

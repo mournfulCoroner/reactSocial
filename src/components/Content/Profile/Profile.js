@@ -5,7 +5,7 @@ import WallContainer from './Wall/WallContainer';
 function Profile(props) {
     return (
         <div className={styles.profile}>
-            <ProfileHeader user={props.user} />
+            <ProfileHeader updateUserStatus={props.updateUserStatus} user={props.user} status={props.status}/>
             <WallContainer store={props.store}/>
         </div>
     );

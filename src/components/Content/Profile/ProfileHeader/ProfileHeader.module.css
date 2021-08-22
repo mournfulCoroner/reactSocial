@@ -72,7 +72,7 @@
     margin: auto;
 }
 
-@media (max-width: 950px) {
+@media (max-width: 800px) {
     .profileHeader{
         grid-template-columns: 100%;
         grid-template-rows: 30% 70%;
