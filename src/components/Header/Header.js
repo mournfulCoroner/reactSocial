@@ -5,10 +5,12 @@ function Header(props) {
   return (
     <header className={styles.header}>
       <div className={styles.header_block}>
-        <NavLink to='/profile'>Отчаяние</NavLink>
+        <NavLink to={ props.isAuth ? `/profile/${props.id}` : '/profile'}>Отчаяние</NavLink>
       </div>
       <div>
-        {props.isAuth ? <NavLink className={styles.header_link} to='/profile'>{props.login}</NavLink> : <NavLink className={styles.header_link} to='/login'>Войти</NavLink>}
+        {props.isAuth ? <NavLink className={styles.header_link}
+          to={'/profile/' + props.id}>{props.login}</NavLink> :
+          <NavLink className={styles.header_link} to='/login'>Войти</NavLink>}
         <NavLink className={styles.header_link} to='/users'>Пользователи</NavLink>
       </div>
     </header>

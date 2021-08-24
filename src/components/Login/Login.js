@@ -2,6 +2,8 @@ import React from 'react';
 import styles from './Login.module.css'
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { loginAPI } from '../../api/api';
+import { connect } from 'react-redux';
 
 const LoginForm = (props) => {
     return (
@@ -16,6 +18,7 @@ const LoginForm = (props) => {
             onSubmit={(values, { setSubmitting }) => {
                 setTimeout(() => {
                     alert(JSON.stringify(values, null, 2));
+                    loginAPI.getAuthorized(values);
                     setSubmitting(false);
                 }, 400);
             }}
@@ -36,35 +39,26 @@ const LoginForm = (props) => {
                     <button type='submit' disabled={isSubmittig} >Клик</button>
                 </Form>)}
         </Formik>
-
-
-        // <div>
-        //     <form className={styles.login_form}>
-        //         <div>
-        //             <input placeholder={'Login'} />
-        //         </div>
-        //         <div>
-        //             <input placeholder={'Password'} />
-        //         </div>
-        //         <div>
-        //             <input type={'checkbox'}/> Remember me?
-        //         </div>
-        //         <div>
-        //             <button>Клик</button>
-        //         </div>
-        //     </form>
-        // </div>
     )
 }
 
 const Login = (props) => {
     return (
         <div>
+            {props.isAuth ? <div>Вы залогинены</div> :  
+            <>
             <div className={styles.login_name}>Логин</div>
-
             <LoginForm />
+            </>
+            }
         </div>
     )
 }
 
-export default Login;
+let mapStateToProps = (state) => {
+    return {
+        isAuth: state.auth.isAuth
+    }
+}
+
+export default connect(mapStateToProps) (Login)

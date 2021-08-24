@@ -4,15 +4,14 @@ import Wall from './Wall';
 
 let mapStateToProps = (state) => {
     return {
-        newPostText: state.profile.newPostText,
         posts: state.profile.posts
     }
 }
 
 let mapDispatchToProps = (dispatch) => {
     return {
-        addPost: () => {
-            dispatch(addPostActionCreator());
+        addPost: (postText) => {
+            dispatch(addPostActionCreator(postText));
         },
         updateNewPostText: (text) => {
             dispatch(updateNewPostTextActionCreator(text))

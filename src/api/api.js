@@ -44,3 +44,14 @@ export const headerAPI = {
         .then(response => response.data)
     }
 }
+
+export const loginAPI = {
+    getAuthorized(authData){
+        return instance.post('/auth/login', {
+            email: authData.email,
+            password: authData.password,
+            rememberMe: authData.rememberMe
+        })
+        .then(response => response.data)
+    }
+}
