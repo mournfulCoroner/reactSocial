@@ -1,0 +1,9 @@
+.error_message{
+    font-size: small;
+    text-align: center;
+    color: red;
+}
+
+.error{
+    border: solid 1px red;
+}

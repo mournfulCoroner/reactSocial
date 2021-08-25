@@ -1,9 +1,11 @@
 import React from 'react';
 import styles from './Login.module.css'
+import errorStyles from './../Content/common/errorStyles.module.css'
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { loginAPI } from '../../api/api';
 import { connect } from 'react-redux';
+import { getAuthorized } from '../../redux/auth-reducer';
+import { Redirect } from 'react-router-dom';
 
 const LoginForm = (props) => {
     return (
@@ -17,18 +19,19 @@ const LoginForm = (props) => {
             })}
             onSubmit={(values, { setSubmitting }) => {
                 setTimeout(() => {
-                    alert(JSON.stringify(values, null, 2));
-                    loginAPI.getAuthorized(values);
+                    props.getAuthorized(values);
                     setSubmitting(false);
                 }, 400);
             }}
         >
-            {({ isSubmittig }) => (
+            {({ isSubmittig, touched, errors}) => (
                 <Form className={styles.login_form}>
-                    <Field name='email' type='email' placeholder={'Email'} />
+                    <Field name='email' type='email' placeholder={'Email'} 
+                    className={touched.email && errors.email && `${errorStyles.error}`}/>
                     <ErrorMessage name='email' component="div" className={styles.error_message} />
 
-                    <Field name='password' type='password' placeholder={'Password'} />
+                    <Field name='password' type='password' placeholder={'Password'} 
+                     className={touched.password && errors.password && `${errorStyles.error}`}/>
                     <ErrorMessage name='password' component="div" className={styles.error_message} />
 
                     <div className={styles.remember_area}>
@@ -43,12 +46,15 @@ const LoginForm = (props) => {
 }
 
 const Login = (props) => {
+    if (props.isAuth){
+        return <Redirect to={`/profile/${props.id}`} /> 
+    }
     return (
         <div>
             {props.isAuth ? <div>Вы залогинены</div> :  
             <>
             <div className={styles.login_name}>Логин</div>
-            <LoginForm />
+            <LoginForm getAuthorized={props.getAuthorized} />
             </>
             }
         </div>
@@ -57,8 +63,11 @@ const Login = (props) => {
 
 let mapStateToProps = (state) => {
     return {
-        isAuth: state.auth.isAuth
+        isAuth: state.auth.isAuth,
+        id: state.auth.id
     }
 }
 
-export default connect(mapStateToProps) (Login)
+export default connect(mapStateToProps, {
+    getAuthorized
+}) (Login)

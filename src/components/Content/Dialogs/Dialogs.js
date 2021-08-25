@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Dialogs.module.css'
+import errorStyles from './../common/errorStyles.module.css'
 import Contact from './Contact/Contact';
 import Message from './Message/Message';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
@@ -11,7 +12,7 @@ const MessageForm = (props) => {
             initialValues={{ textMessage: '' }}
             validationSchema={Yup.object({
                 textMessage: Yup.string()
-                    .required().max(300)
+                    .required().max(120)
             })}
             onSubmit={(values, { setSubmitting }) => {
                 setTimeout(() => {
@@ -21,10 +22,14 @@ const MessageForm = (props) => {
                 }, 400);
             }}
         >
-            {({ isSubmittig, values }) => (
+            {({ isSubmittig, values, touched, errors  }) => (
                 <Form className={styles.messages_block__submit_area}>
                     <Field name='textMessage' as='textarea' value={values.textMessage}
-                    className={styles.messages_block__submit_text} placeholder='Введите сообщение' />
+                    className={
+                        touched.textMessage && errors.textMessage ? `${styles.messages_block__submit_text} ${errorStyles.error}` :
+                        `${styles.messages_block__submit_text}`
+                    } placeholder='Введите сообщение' />
+                    <ErrorMessage name='textMessage' component='div' className={errorStyles.error_message}/>
                     <button disabled={isSubmittig}
                     className={styles.messages_block__submit_button} type='submit'>Отправить</button>
                 </Form>)}
@@ -35,15 +40,6 @@ const MessageForm = (props) => {
 const Dialogs = (props) => {
     let messages = props.dialogs.messages.map((mes) => <Message key={mes.id} id={mes.id} message_text={mes.message_text} self={mes.self} />)
     let contacts = props.dialogs.contacts.map((contact) => <Contact key={contact.id} id={contact.id} username={contact.username}  />)
-
-    let submitMessage = () => {
-        props.addMessage();
-    }
-
-    let onChangeNewMessage = (e) => {
-        let text = e.target.value;
-        props.updateNewMessageText(text);
-    }
     
     return (
         <div className={styles.dialogs}>

@@ -1,11 +1,10 @@
 import React from 'react';
 import Post from './Post/Post';
 import styles from './Wall.module.css';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { Formik, Field, Form} from 'formik';
 import * as Yup from 'yup';
 
 const WallForm = (props) => {
-
     return (
         <Formik initialValues={{ postText: '' }}
             validationSchema={
@@ -27,9 +26,10 @@ const WallForm = (props) => {
                 <Form className={styles.submit_box}>
                     <Field as='textarea' name="postText"
                      className={styles.submit_area} placeholder='Введите текст!'/>
-
+                    
                     <button className={styles.submit_button} type='submit'
                      disabled={isSubmitting}> Жмяк</button>
+
                 </Form>
             )}
         </Formik>
