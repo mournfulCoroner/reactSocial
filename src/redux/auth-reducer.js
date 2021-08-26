@@ -44,21 +44,20 @@ export const getAuth = () => (dispatch) => {
 }
 
 
-export const getAuthorized = (authData) => {
-    return (dispatch) => {
-        loginAPI.getAuthorized(authData).then((data) => {
-            if (data.resultCode === 0) {
-                dispatch(getAuth());
-                dispatch(toggleSuccessAuth(null));
-                return null;
-            }
-            else {
-                dispatch(toggleSuccessAuth(data.messages[0]));
-                return data.messages[0];
-            }
-        })
-    }
+export const getAuthorized = (authData) => (dispatch) => {
+    return loginAPI.getAuthorized(authData).then((data) => {
+        if (data.resultCode === 0) {
+            dispatch(getAuth());
+            dispatch(toggleSuccessAuth(null));
+             return null;
+        }
+        else {
+            dispatch(toggleSuccessAuth(data.messages[0]));
+            return data.messages[0];
+        }
+    })
 }
+
 
 export const logout = () => {
     return (dispatch) => {
