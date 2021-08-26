@@ -1,7 +1,8 @@
 import { headerAPI, loginAPI } from "../api/api";
 
 const SET_AUTH_USER_DATA = 'SET_AUTH_USER_DATA'
-const TOGGLE_SUCCESS_AUTH = 'TOGGLE_SUCCESS_AUTH' 
+// Убрать потом (или нет) штука для проверки успеха логина
+const TOGGLE_SUCCESS_AUTH = 'TOGGLE_SUCCESS_AUTH'
 
 
 let initialState = {
@@ -9,7 +10,7 @@ let initialState = {
     email: null,
     login: null,
     isAuth: false,
-    successAuth: true
+    successAuth: null
 };
 
 const authReducer = (state = initialState, action) => {
@@ -21,7 +22,7 @@ const authReducer = (state = initialState, action) => {
                 isAuth: action.isAuth
             }
         case TOGGLE_SUCCESS_AUTH:
-            return{
+            return {
                 ...state,
                 successAuth: action.successAuth
             }
@@ -32,29 +33,28 @@ const authReducer = (state = initialState, action) => {
 }
 
 export const setAuthUserData = (data, isAuth) => ({ type: SET_AUTH_USER_DATA, data, isAuth });
-export const toggleSuccessAuth = (successAuth) => ({ type: TOGGLE_SUCCESS_AUTH, successAuth})
+export const toggleSuccessAuth = (successAuth) => ({ type: TOGGLE_SUCCESS_AUTH, successAuth })
 
-export const getAuth = () => {
-    return (dispatch) => {
-        headerAPI.getAuth().then((data) => {
-            if (data.resultCode === 0) {
-                dispatch(setAuthUserData(data.data, true));
-            }
-        })
-    }
+export const getAuth = () => (dispatch) => {
+    return headerAPI.getAuth().then((data) => {
+        if (data.resultCode === 0) {
+            dispatch(setAuthUserData(data.data, true));
+        }
+    })
 }
+
 
 export const getAuthorized = (authData) => {
     return (dispatch) => {
         loginAPI.getAuthorized(authData).then((data) => {
             if (data.resultCode === 0) {
                 dispatch(getAuth());
-                dispatch(toggleSuccessAuth(true));
-                return true;
+                dispatch(toggleSuccessAuth(null));
+                return null;
             }
-            else{
-                dispatch(toggleSuccessAuth(false));
-                return false;
+            else {
+                dispatch(toggleSuccessAuth(data.messages[0]));
+                return data.messages[0];
             }
         })
     }
@@ -64,7 +64,7 @@ export const logout = () => {
     return (dispatch) => {
         loginAPI.logout().then((data) => {
             if (data.resultCode === 0) {
-                dispatch(setAuthUserData({id: null, email: null,login: null}, false));
+                dispatch(setAuthUserData({ id: null, email: null, login: null }, false));
             }
         })
     }

@@ -17,11 +17,11 @@ function Header(props) {
   return (
     <header className={styles.header}>
       <div className={styles.header_block}>
-        <NavLink to={ props.isAuth ? `/profile/${props.id}` : '/profile'}>Отчаяние</NavLink>
+        <NavLink to={ props.isAuth ? `/profile` : '/profile'}>Отчаяние</NavLink>
       </div>
       <div>
         {props.isAuth ? <button onClick={ onClickProfileMenu } className={styles.header_link}
-          to={'/profile/' + props.id}>{props.login}</button> :
+          >{props.login}</button> :
           <NavLink className={styles.header_link} to='/login'>Войти</NavLink>}
 
 

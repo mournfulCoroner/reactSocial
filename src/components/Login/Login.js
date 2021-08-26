@@ -20,10 +20,9 @@ const LoginForm = (props) => {
             onSubmit={(values, { setSubmitting, setErrors }) => {
 
                 setTimeout(() => {
-                    
                     if(!props.getAuthorized(values)){
                         // setStatus({apiError: 'Email or password is wrong'})
-                        setErrors({rememberMe: 'Email or password is wrong'})
+                        setErrors({rememberMe: 'Invalid entrance'})
                     }
                     // else{
                     //     setStatus({apiError: null})
@@ -60,7 +59,7 @@ const LoginForm = (props) => {
 const Login = (props) => {
 
     if (props.isAuth){
-        return <Redirect to={`/profile/${props.id}`} /> 
+        return <Redirect to={`/profile`} /> 
     }
     return (
         <div>
