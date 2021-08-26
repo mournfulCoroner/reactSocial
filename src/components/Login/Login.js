@@ -10,29 +10,41 @@ import { Redirect } from 'react-router-dom';
 const LoginForm = (props) => {
     return (
         <Formik
-            initialValues={{ email: '', password: '', rememberMe: false }}
+            initialValues={{ email: '', password: '', rememberMe: false}}
             validationSchema={Yup.object({
                 email: Yup.string()
                     .required('Required'),
                 password: Yup.string()
-                    .required('Required')
+                    .required('Required'),
             })}
-            onSubmit={(values, { setSubmitting }) => {
+            onSubmit={(values, { setSubmitting, setErrors }) => {
+
                 setTimeout(() => {
-                    props.getAuthorized(values);
+                    
+                    if(!props.getAuthorized(values)){
+                        // setStatus({apiError: 'Email or password is wrong'})
+                        setErrors({rememberMe: 'Email or password is wrong'})
+                    }
+                    // else{
+                    //     setStatus({apiError: null})
+                    // }
                     setSubmitting(false);
                 }, 400);
             }}
         >
-            {({ isSubmittig, touched, errors}) => (
+            {({ isSubmittig, touched, errors, status}) => (
                 <Form className={styles.login_form}>
                     <Field name='email' type='email' placeholder={'Email'} 
-                    className={touched.email && errors.email && `${errorStyles.error}`}/>
+                    className={touched.email && errors.email  && `${errorStyles.error}`}/>
                     <ErrorMessage name='email' component="div" className={styles.error_message} />
 
                     <Field name='password' type='password' placeholder={'Password'} 
                      className={touched.password && errors.password && `${errorStyles.error}`}/>
                     <ErrorMessage name='password' component="div" className={styles.error_message} />
+{/* 
+                    {status?.apiError ? <div className={styles.error_message}>{status.apiError}</div> : null} */}
+                    
+                    <ErrorMessage name='rememberMe' component="div" className={styles.error_message} /> 
 
                     <div className={styles.remember_area}>
                         <Field name='rememberMe' type='checkbox' />
@@ -46,6 +58,7 @@ const LoginForm = (props) => {
 }
 
 const Login = (props) => {
+
     if (props.isAuth){
         return <Redirect to={`/profile/${props.id}`} /> 
     }
@@ -54,7 +67,7 @@ const Login = (props) => {
             {props.isAuth ? <div>Вы залогинены</div> :  
             <>
             <div className={styles.login_name}>Логин</div>
-            <LoginForm getAuthorized={props.getAuthorized} />
+            <LoginForm getAuthorized={props.getAuthorized} successAuth={props.successAuth} />
             </>
             }
         </div>
@@ -64,9 +77,11 @@ const Login = (props) => {
 let mapStateToProps = (state) => {
     return {
         isAuth: state.auth.isAuth,
-        id: state.auth.id
+        id: state.auth.id,
+        successAuth: state.auth.successAuth
     }
 }
+
 
 export default connect(mapStateToProps, {
     getAuthorized

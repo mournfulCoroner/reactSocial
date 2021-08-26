@@ -1,13 +1,15 @@
 import { headerAPI, loginAPI } from "../api/api";
 
 const SET_AUTH_USER_DATA = 'SET_AUTH_USER_DATA'
+const TOGGLE_SUCCESS_AUTH = 'TOGGLE_SUCCESS_AUTH' 
 
 
 let initialState = {
     id: null,
     email: null,
     login: null,
-    isAuth: false
+    isAuth: false,
+    successAuth: true
 };
 
 const authReducer = (state = initialState, action) => {
@@ -18,6 +20,11 @@ const authReducer = (state = initialState, action) => {
                 ...action.data,
                 isAuth: action.isAuth
             }
+        case TOGGLE_SUCCESS_AUTH:
+            return{
+                ...state,
+                successAuth: action.successAuth
+            }
         default:
             return state;
     }
@@ -25,6 +32,7 @@ const authReducer = (state = initialState, action) => {
 }
 
 export const setAuthUserData = (data, isAuth) => ({ type: SET_AUTH_USER_DATA, data, isAuth });
+export const toggleSuccessAuth = (successAuth) => ({ type: TOGGLE_SUCCESS_AUTH, successAuth})
 
 export const getAuth = () => {
     return (dispatch) => {
@@ -41,6 +49,12 @@ export const getAuthorized = (authData) => {
         loginAPI.getAuthorized(authData).then((data) => {
             if (data.resultCode === 0) {
                 dispatch(getAuth());
+                dispatch(toggleSuccessAuth(true));
+                return true;
+            }
+            else{
+                dispatch(toggleSuccessAuth(false));
+                return false;
             }
         })
     }
