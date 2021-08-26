@@ -20,17 +20,9 @@ const LoginForm = (props) => {
             onSubmit={(values, { setSubmitting, setErrors }) => {
 
                 setTimeout(() => {
-
-                    props.getAuthorized(values).then((errors)=>{
-                        setErrors({rememberMe: errors})
+                    props.getAuthorized(values).then(()=>{
+                        setErrors({rememberMe: props.successAuth})
                     })
-                    // if(!props.getAuthorized(values)){
-                    //     // setStatus({apiError: 'Email or password is wrong'})
-                    //     setErrors({rememberMe: 'Invalid entrance'})
-                    // }
-                    // else{
-                    //     setStatus({apiError: null})
-                    // }
                     setSubmitting(false);
                 }, 400);
             }}

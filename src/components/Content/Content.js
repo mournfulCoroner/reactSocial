@@ -11,7 +11,7 @@ function Content(props) {
             <Route path='/profile/:userId?' render={() => <ProfileContainer />}></Route>
             <Route path='/messages' render={() => <DialogsContainer />}></Route>
             <Route path='/users' render={() => <UsersContainer />}></Route>
-            <Route path='/login' render={() => <Login />}></Route>            
+            <Route path='/login' render={() => <Login />}></Route>        
         </div>
     );
 }

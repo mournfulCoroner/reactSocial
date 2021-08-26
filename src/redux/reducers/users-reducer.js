@@ -65,37 +65,25 @@ export const setTotalUsersCount = (totalCount) => ({ type: SET_TOTAL_USERS_COUNT
 export const toggleFetching = (isFetching) => ({ type: TOGGLE_FETCHING, isFetching });
 export const toggleIsFollowingProgress = (isFollowing, userId) => ({ type: TOGGLE_IS_FOLLOWING_PROGRESS, isFollowing, userId })
 
-export const getUsersThunk = (activePage, pageSize) => {
-    return (dispatch) => {
-        dispatch(toggleFetching(true));
-        usersAPI.getUsers(activePage, pageSize).then((data) => {
-            dispatch(toggleFetching(false));
-            dispatch(setUsers(data.items));
-            dispatch(setTotalUsersCount(data.totalCount));
-        })
-    }
+export const getUsersThunk = (activePage, pageSize) => async (dispatch) => {
+    dispatch(toggleFetching(true));
+
+    let data = await usersAPI.getUsers(activePage, pageSize)
+
+    dispatch(toggleFetching(false));
+    dispatch(setUsers(data.items));
+    dispatch(setTotalUsersCount(data.totalCount));
 }
 
-export const followUserThunk = (userId, isFollow) => {
-    return (dispatch) => {
-        dispatch(toggleIsFollowingProgress(true, userId));
-        if (isFollow) {
-            usersAPI.deleteFollow(userId).then((data) => {
-                if (data.resultCode === 0) {
-                    dispatch(followUser(userId));
-                }
-                dispatch(toggleIsFollowingProgress(false, userId));
-            })
-        }
-        else {
-            usersAPI.postFollow(userId).then((data) => {
-                if (data.resultCode === 0) {
-                    dispatch(followUser(userId));
-                }
-                dispatch(toggleIsFollowingProgress(false, userId));
-            })
-        }
+export const followUserThunk = (userId, isFollow) => async (dispatch) => {
+    dispatch(toggleIsFollowingProgress(true, userId));
+    let data = isFollow ? await usersAPI.deleteFollow(userId) : await usersAPI.postFollow(userId);
+
+    if (data.resultCode === 0) {
+        dispatch(followUser(userId));
     }
+    dispatch(toggleIsFollowingProgress(false, userId));
 }
+
 
 export default usersReducer;

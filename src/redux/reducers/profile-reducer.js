@@ -59,23 +59,20 @@ export const updateNewPostTextActionCreator = (text) =>
 export const setProfileUser = (user) => ({ type: SET_PROFILE_USER, user })
 export const setUserStatus = (status) => ({ type: SET_USER_STATUS, status })
 
-export const getUserProfileThunk = (userId) => {
-    return (dispatch) => {
-        profileAPI.getUserData(userId).then((data) => {
-            dispatch(setProfileUser(data));
-        });
-        profileAPI.getUserStatus(userId).then((data) => {
-            dispatch(setUserStatus(data))
-        })
-    }
+export const getUserProfileThunk = (userId) => async (dispatch) => {
+    let data = await profileAPI.getUserData(userId)
+    dispatch(setProfileUser(data));
+
+    data = await profileAPI.getUserStatus(userId)
+    dispatch(setUserStatus(data))
 }
 
-export const updateUserStatus = (status) => (dispatch) => {
-    profileAPI.updateStatus(status).then((data) => {
-        if (data.resultCode === 0) {
-            dispatch(setUserStatus(status))
-        }
-    })
+
+export const updateUserStatus = (status) => async (dispatch) => {
+    let data = await profileAPI.updateStatus(status)
+    if (data.resultCode === 0) {
+        dispatch(setUserStatus(status))
+    }
 }
 
 export default profileReducer;

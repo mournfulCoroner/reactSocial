@@ -3,35 +3,14 @@ const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT';
 
 let initialState = {
     contacts: [
-        {
-            id: 1,
-            username: 'Алексей'
-        },
-        {
-            id: 2,
-            username: 'Андрей'
-        },
-        {
-            id: 3,
-            username: 'Алина'
-        }
+        {id: 1, username: 'Алексей'},
+        {id: 2, username: 'Андрей'},
+        {id: 3, username: 'Алина'}
     ],
     messages: [
-        {
-            id: 1,
-            message_text: 'Сообщение 1',
-            self: false
-        },
-        {
-            id: 2,
-            message_text: 'Сообщение 2',
-            self: false
-        },
-        {
-            id: 3,
-            message_text: 'Ответ',
-            self: true
-        }
+        { id: 1, message_text: 'Сообщение 1', self: false },
+        { id: 2, message_text: 'Сообщение 2', self: false },
+        { id: 3, message_text: 'Ответ', self: true}
     ]
 }
 
