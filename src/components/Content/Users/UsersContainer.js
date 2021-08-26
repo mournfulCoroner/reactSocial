@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { followUserThunk, getUsersThunk, setActivePage, toggleIsFollowingProgress } from "../../../redux/users-reducer";
+import { followUserThunk, getUsersThunk, setActivePage, toggleIsFollowingProgress } from "../../../redux/reducers/users-reducer";
 import Users from "./Users";
 
 

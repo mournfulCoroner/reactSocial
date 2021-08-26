@@ -4,7 +4,7 @@ import styles from './Wall.module.css';
 import { Formik, Field, Form} from 'formik';
 import * as Yup from 'yup';
 
-const WallForm = (props) => {
+const WallForm = React.memo(props => {
     return (
         <Formik initialValues={{ postText: '' }}
             validationSchema={
@@ -34,7 +34,7 @@ const WallForm = (props) => {
             )}
         </Formik>
     )
-}
+})
 
 
 

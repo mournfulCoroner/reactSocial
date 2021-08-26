@@ -4,7 +4,7 @@ import errorStyles from './../Content/common/errorStyles.module.css'
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { connect } from 'react-redux';
-import { getAuthorized } from '../../redux/auth-reducer';
+import { getAuthorized } from '../../redux/reducers/auth-reducer';
 import { Redirect } from 'react-router-dom';
 
 const LoginForm = (props) => {

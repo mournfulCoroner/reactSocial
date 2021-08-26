@@ -4,12 +4,14 @@ import styles from './Header.module.css';
 
 function Header(props) {
   const [isOpenProfileMenu, setIsOpenProfileMenu] = useState(false);
+  const [disabledMenu, setDisabledMenu] = useState(false);
 
   const onClickProfileMenu = () => {
     setIsOpenProfileMenu(!isOpenProfileMenu);
   }
 
   const onClickLogout = () => {
+    setDisabledMenu(true);
     setIsOpenProfileMenu(!isOpenProfileMenu);
     props.logout();
   }
@@ -20,7 +22,7 @@ function Header(props) {
         <NavLink to={ props.isAuth ? `/profile` : '/profile'}>Отчаяние</NavLink>
       </div>
       <div>
-        {props.isAuth ? <button onClick={ onClickProfileMenu } className={styles.header_link}
+        {props.isAuth ? <button onClick={ onClickProfileMenu } className={styles.header_link} disabled={disabledMenu}
           >{props.login}</button> :
           <NavLink className={styles.header_link} to='/login'>Войти</NavLink>}
 

@@ -8,7 +8,7 @@ import Content from './components/Content/Content';
 import FriendsBlockContainer from './components/FriendsBlock/FriendsBlockContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Menu from './components/Menu/Menu';
-import { initSuccess } from './redux/app-reducer';
+import { initSuccess } from './redux/reducers/app-reducer';
 
 
 class App extends React.Component {
@@ -27,7 +27,7 @@ class App extends React.Component {
           <HeaderContainer />
           <FriendsBlockContainer />
           <Menu />
-          <Content />
+          <Content /> 
         </div>
       </div>
     );

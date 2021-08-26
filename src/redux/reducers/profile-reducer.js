@@ -1,4 +1,4 @@
-import { profileAPI } from "../api/api";
+import { profileAPI } from "../../api/api";
 
 const ADD_POST = 'ADD_POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';

@@ -24,7 +24,7 @@ let Users = (props) => {
             <div className={styles.pages}>
                 {
                     pages.map((page) => {
-                        return (<span className={props.activePage === page ? styles.active_page : styles.inactive_page}
+                        return (<span key={page} className={props.activePage === page ? styles.active_page : styles.inactive_page}
                             onClick={() => (props.onPageChange(page))}>
                             {page}</span>)
                     })

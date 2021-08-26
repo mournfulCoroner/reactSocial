@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { compose } from 'redux';
 import authRedirectHoc from '../../../hoc/authRedirectHoc';
-import { addMessageCreator, updateNewMessageTextCreator } from '../../../redux/dialogs-reducer';
+import { addMessageCreator, updateNewMessageTextCreator } from '../../../redux/reducers/dialogs-reducer';
 import Dialogs from './Dialogs';
 
 class DialogsContainer extends React.Component{

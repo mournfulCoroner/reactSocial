@@ -1,4 +1,4 @@
-import { headerAPI, loginAPI } from "../api/api";
+import { headerAPI, loginAPI } from "../../api/api";
 
 const SET_AUTH_USER_DATA = 'SET_AUTH_USER_DATA'
 // Убрать потом (или нет) штука для проверки успеха логина

@@ -1,9 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import Profile from "./Profile";
-import { getUserProfileThunk, updateUserStatus } from "../../../redux/profile-reducer";
+import { getUserProfileThunk, updateUserStatus } from "../../../redux/reducers/profile-reducer";
 import { withRouter } from "react-router-dom";
-import authRedirectHoc from "../../../hoc/authRedirectHoc";
 import { compose } from "redux";
 
 
@@ -40,6 +39,5 @@ export default compose(
         getUserProfileThunk,
         updateUserStatus
     }),
-    withRouter,
-    // authRedirectHoc
+    withRouter
 )(ProfileContainer)
