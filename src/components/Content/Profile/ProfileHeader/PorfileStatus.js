@@ -33,7 +33,6 @@ const ProfileStatus = (props) => {
         <div className={styles.profile_status}>
             {
                 !isEdit ?
-                    // this.props.status && 
                     <div onDoubleClick={enableEditMode} className={styles.description}>{status}</div> :
                     <input autoFocus={true} onBlur={disableEditMode} onChange={onStatusChange}
                         className={styles.description_input} value={status}></input>

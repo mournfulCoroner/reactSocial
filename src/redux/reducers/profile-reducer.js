@@ -19,7 +19,7 @@ let initialState = {
         }
     ],
     profile: null,
-    status: null
+    status: ''
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -46,7 +46,7 @@ const profileReducer = (state = initialState, action) => {
 
 
         case SET_USER_STATUS:
-            return { ...state, status: action.status }
+            return { ...state, status: action.status ? action.status : '' }
 
         default:
             return state;

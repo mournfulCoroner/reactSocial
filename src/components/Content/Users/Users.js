@@ -2,18 +2,10 @@ import styles from './Users.module.css'
 import basePhoto from './../../../assets/images/achhi.jpg'
 import UserPile from './UserPile/UserPile';
 import Preloader from '../common/Preloader/Preloader';
+import Pagination from './Pagination';
 
 
 let Users = (props) => {
-    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
-    let pages = [];
-    for (let i = 1; i <= pagesCount; i++) {
-        pages.push(i);
-    }
-
-    // useEffect(() => {
-    //     props.getUsers(props.activePage, props.pageSize);
-    // }, [props.activePage])
 
     let users = props.users.map((user) => <UserPile key={user.id} id={user.id}
         userName={user.name} status={user.status} isFollow={user.followed}
@@ -24,15 +16,9 @@ let Users = (props) => {
             
     return (
         <div className={styles.page_users_wrapper}>
-            <div className={styles.pages}>
-                {
-                    pages.map((page) => {
-                        return (<span key={page} className={props.activePage === page ? styles.active_page : styles.inactive_page}
-                            onClick={() => {props.setActivePage(page)}}>
-                            {page}</span>)
-                    })
-                }
-            </div>
+            <Pagination totalUsersCount={props.totalUsersCount} pageSize={props.pageSize}
+            activePage={props.activePage} setActivePage={props.setActivePage}
+            pageRange={props.pageRange}/>
             {props.isFetching ?
                 <Preloader />
                 : <div className={styles.users_wrapper}>
