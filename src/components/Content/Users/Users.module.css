@@ -79,19 +79,25 @@
 .inactive_page {
     font-weight: normal;
     cursor: pointer;
+    border-radius: 10px;
     padding: 0 7px;
+}
+
+.inactive_page:hover {
+    background-color: var(--main-color60);
 }
 
 .arrow_button{
     background-color: white;
-    border: 1px solid black;
+    border: none;
     border-radius: 5px;
     cursor: pointer;
     margin: 0 5px;
+    padding: 4px;
 }
 
 .arrow_button:hover{
-    background-color: #EEEEEE;
+    background-color: var(--main-color80);
 }
 
 .userName_block{

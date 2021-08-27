@@ -38,13 +38,15 @@ header button {
   top: 55px;
   position: absolute;
   right: 0;
-  background-color: var(--main-color80);
+  background-color: #DBEADB;
   min-width: 170px;
   width: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 7px;
+  border-radius: 0 0 5px 5px;
+  border: 1px solid var(--main-color);
   visibility:hidden;
   opacity: 0;
 }
