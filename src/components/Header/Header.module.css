@@ -5,7 +5,7 @@ header {
   left: 0;
   right: 0;
   top: 0;
-  height: 55px;
+  height: var(--header-heigth);
   background-color: var(--main-color);
   display: grid;
   align-items: center;
@@ -20,7 +20,6 @@ header button {
   border: none;
   cursor: pointer;
   background: none;
-  font-size: 16px;
 }
 
 .header_block {
@@ -35,7 +34,7 @@ header button {
 }
 
 .header_profile_menu {
-  top: 55px;
+  top: var(--header-heigth);
   position: absolute;
   right: 0;
   background-color: #DBEADB;

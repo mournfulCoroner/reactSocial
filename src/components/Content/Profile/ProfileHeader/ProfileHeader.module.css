@@ -6,6 +6,7 @@
 
 .profile_status{
     display: flex;
+    max-width: 40em;
 }
 
 .description{

@@ -3,6 +3,7 @@
   --main-color80: #b8cbb880;
   --main-color60: #b8cbb860;
   --light-main-color: #DBEADB;
+  --header-heigth: 65px;
 }
 
 
@@ -10,6 +11,7 @@
   font-family: 'Courier New', Courier, monospace;
   color: rgb(83, 62, 55);
   font-weight: bold;
+  font-size: 102%;
 }
 
 .wrapper{

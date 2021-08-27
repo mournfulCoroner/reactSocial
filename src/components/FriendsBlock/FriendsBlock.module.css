@@ -13,20 +13,34 @@
     position: fixed;
     height: auto;
     padding: 10px;
+    /* transform: scaleY(0); */
+    max-width: 0;
+    visibility: hidden;
+    transition: visibility 0.1s linear 0.5s;
+    transition: max-width 0.5s linear;
 }
 
 .fblock__open.active{
-    transform: scaleX(1);
+    /* transform: scaleY(1); */
+    visibility: visible;
+    opacity: 1;
+    max-width: 116px;
 }
 
 .fblock__button{
-    background: url(./double-right.png) no-repeat center center;
+    /* background: url(./double-right.png) no-repeat center center; */
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    background-color: var(--main-color);
+    transition: left 0.5s linear;
+    left: 0;
+    padding: 15px;
 }
 
 .fblock__close{
     align-items: center;
     position: fixed;
-    background-color: #b8cbb8;
     padding: 10px;
 }
 
@@ -58,4 +72,10 @@
 
 .ftitle{
     margin: 5px 1px 3px 1px;
+}
+
+@media (max-width: 800px) {
+    .profileHeader{
+        
+    }
 }
