@@ -1,23 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { followUserThunk, getUsersThunk, setActivePage, toggleIsFollowingProgress } from "../../../redux/reducers/users-reducer";
 import Users from "./Users";
 
 
-class UsersContainer extends React.Component {
+const UsersContainer = (props) => {
 
-    componentDidMount() {
-        this.props.getUsers(this.props.activePage, this.props.pageSize);
-    }
+    useEffect(() => {
+        props.getUsers(props.activePage, props.pageSize);
+    }, [props.activePage])// eslint-disable-line react-hooks/exhaustive-deps
 
-    onPageChange = (activePage) => {
-        this.props.setActivePage(activePage);
-        this.props.getUsers(this.props.activePage, this.props.pageSize);       
-    }
-
-    render() {
-        return <Users {...this.props} onPageChange={this.onPageChange} />
-    }
+    return <Users {...props} />
 }
 
 let mapStateToProps = (state) => {

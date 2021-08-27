@@ -4,13 +4,16 @@ import UserPile from './UserPile/UserPile';
 import Preloader from '../common/Preloader/Preloader';
 
 
-
 let Users = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
     let pages = [];
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i);
     }
+
+    // useEffect(() => {
+    //     props.getUsers(props.activePage, props.pageSize);
+    // }, [props.activePage])
 
     let users = props.users.map((user) => <UserPile key={user.id} id={user.id}
         userName={user.name} status={user.status} isFollow={user.followed}
@@ -25,7 +28,7 @@ let Users = (props) => {
                 {
                     pages.map((page) => {
                         return (<span key={page} className={props.activePage === page ? styles.active_page : styles.inactive_page}
-                            onClick={() => (props.onPageChange(page))}>
+                            onClick={() => {props.setActivePage(page)}}>
                             {page}</span>)
                     })
                 }
