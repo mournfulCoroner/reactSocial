@@ -6,12 +6,14 @@ const ProfileStatus = (props) => {
     const [isEdit, setIsEdit] = useState(false);
     const [status, setStatus] = useState(props.status);
 
-    useEffect(()=> {
+    useEffect(() => {
         setStatus(props.status)
     }, [props.status]);
-    
+
     let enableEditMode = () => {
-        setIsEdit(true);
+        if (props.isOwner) {
+            setIsEdit(true);
+        }
     }
 
     let disableEditMode = () => {

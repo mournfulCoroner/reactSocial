@@ -4,6 +4,7 @@ const ADD_POST = 'ADD_POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
 const SET_PROFILE_USER = 'SET_PROFILE_USER';
 const SET_USER_STATUS = 'SET_USER_STATUS';
+const SET_USER_AVATAR = 'SET_USER_AVATAR';
 
 let initialState = {
     posts: [
@@ -18,7 +19,9 @@ let initialState = {
             likes: 25
         }
     ],
-    profile: null,
+    profile: {
+        user: null
+    },
     status: ''
 };
 
@@ -48,6 +51,9 @@ const profileReducer = (state = initialState, action) => {
         case SET_USER_STATUS:
             return { ...state, status: action.status ? action.status : '' }
 
+        case SET_USER_AVATAR:
+            return {...state, user: {...state.user, photos: action.file}}
+
         default:
             return state;
     }
@@ -58,6 +64,8 @@ export const updateNewPostTextActionCreator = (text) =>
     ({ type: UPDATE_NEW_POST_TEXT, textPost: text })
 export const setProfileUser = (user) => ({ type: SET_PROFILE_USER, user })
 export const setUserStatus = (status) => ({ type: SET_USER_STATUS, status })
+export const setUserAvatar = (file) => ({ type: SET_USER_AVATAR, file })
+
 
 export const getUserProfileThunk = (userId) => async (dispatch) => {
     let data = await profileAPI.getUserData(userId)
@@ -72,6 +80,13 @@ export const updateUserStatus = (status) => async (dispatch) => {
     let data = await profileAPI.updateStatus(status)
     if (data.resultCode === 0) {
         dispatch(setUserStatus(status))
+    }
+}
+
+export const saveAvatar = (file) => async (dispatch) => {
+    let data = await profileAPI.saveAvatar(file)
+    if (data.resultCode === 0) {
+        dispatch(setUserAvatar(data.data.photos))
     }
 }
 
