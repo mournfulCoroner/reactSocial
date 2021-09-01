@@ -17,6 +17,9 @@ let Pagination = (props) => {
     return (
         <div className={styles.pages}>
             {
+                activePageRange > 1 && <button className={styles.arrow_button} onClick={() => {setActivePageRange(1)}}>{'<<'}</button>
+            }
+            {
                 activePageRange > 1 && <button className={styles.arrow_button} onClick={() => {setActivePageRange(activePageRange - 1)}}>{'<--'}</button>
             }
             {
@@ -30,6 +33,9 @@ let Pagination = (props) => {
             }
             {
                 activePageRange < pageRange && <button className={styles.arrow_button} onClick={() => {setActivePageRange(activePageRange + 1)}}>{'-->'}</button>
+            }
+            {
+                activePageRange < pageRange && <button className={styles.arrow_button} onClick={() => {setActivePageRange(pageRange)}}>{'>>'}</button>
             }
         </div>
     )

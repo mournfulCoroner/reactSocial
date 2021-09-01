@@ -1,6 +1,9 @@
 .fblock{
     grid-area: fblock;
     margin-top: 240px;
+    transform: translate(-100%);
+    transition: transform 0.5s linear;
+    position: fixed;
 }
 
 
@@ -10,38 +13,45 @@
     justify-content: flex-start;
     flex-direction: column;
     align-items: center;
-    position: fixed;
+    position: relative;
     height: auto;
     padding: 10px;
-    /* transform: scaleY(0); */
-    max-width: 0;
+    /* transform: translate(-100%); */
+    /* max-width: 0;
     visibility: hidden;
     transition: visibility 0.9s linear 0.5s;
-    transition: max-width 0.6s linear;
+    transition: max-width 0.6s linear; */
+    /* transition: transform 0.5s linear; */
 }
 
 .fblock__open.active{
     /* transform: scaleY(1); */
-    visibility: visible;
+    transform: translate(116px);
+    /* visibility: visible;
     opacity: 1;
-    max-width: 116px;
+    max-width: 116px; */
+}
+
+.fblock.active{
+    transform: translate(0);   
 }
 
 .fblock__button{
     /* background: url(./double-right.png) no-repeat center center; */
     border: none;
     cursor: pointer;
-    position: absolute;
+    position: relative;
     background-color: var(--main-color);
     transition: left 0.5s linear;
-    left: 0;
     padding: 15px;
+    left: 115px;
 }
 
 .fblock__close{
     align-items: center;
-    position: fixed;
+    position: absolute;
     padding: 10px;
+    left: -10px;
 }
 
 .fblock__friends{

@@ -8,17 +8,16 @@ const FriendsBlock = (props) => {
     
     let [isOpenFriends, setIsOpenFriends] = useState(false);
     let open_friends = (e) => {
-        setIsOpenFriends(!isOpenFriends);
-        !isOpenFriends ? e.currentTarget.style.left = '116px' : e.currentTarget.style.left = '0px'
+        setIsOpenFriends(!isOpenFriends);        
     }
     
     return (
-        <div className={styles.fblock}>
+        <div className={isOpenFriends ? `${styles.fblock} ${styles.active}` : `${styles.fblock}`}>
             <div className={styles.fblock__close}>
-                <button className={styles.fblock__button} onClick={ open_friends }>{'>'}</button>
+                <button className={styles.fblock__button} onClick={ open_friends }>{!isOpenFriends ? '>' : '<'}</button>
             </div>
-            <div className={
-                isOpenFriends ? `${styles.fblock__open} ${styles.active}` : `${styles.fblock__open}`}>
+            <div className={styles.fblock__open
+                /* isOpenFriends ? `${styles.fblock__open} ${styles.active}` : `${styles.fblock__open}` */}>
                 <p className={styles.ftitle}>Palms</p>
                 <div className={styles.fblock__friends}>
                     {friends}

@@ -1,8 +1,13 @@
 import Preloader from '../../common/Preloader/Preloader';
 import ProfileStatus from './PorfileStatus';
 import styles from './ProfileHeader.module.css';
+import ProfileInfo from './ProfileInfo/ProfileInfo';
+import greendots from './../../../../assets/images/green_dots.svg'
+import { useState } from 'react';
 
 function ProfileHeader(props) {
+
+    const [editInfoMode, setEditInfoMode] = useState(false);
 
     if (!props.user) {
         return <Preloader />
@@ -17,19 +22,24 @@ function ProfileHeader(props) {
     return (
         <div>
             <div className={styles.back_profile}>
-                <img alt='' src='https://st.depositphotos.com/1006076/3995/i/600/depositphotos_39951147-stock-photo-spring-landscape-watercolor-flowering-trees.jpg'></img>
+                <img alt='' src={greendots}></img>
             </div>
             <div className={styles.profileHeader}>
                 <div className={styles.name}>{props.user.fullName}</div>
-                <div>
+                <div className={styles.avatar_block}>
                     <div className={styles.avatar}>
                         <img alt='' src={props.user.photos.large || 'https://pm1.narvii.com/6526/3c85b728f80710521171197855342fd1d88876fb_hq.jpg'}></img>
                     </div>
-                    {props.isOwner ? <input type='file' onChange={ savePhoto } /> : null}
+                    {props.isOwner ? <div>
+                        <label for='avatar-upload' className={styles.avatar_button}>Загрузить фото</label> 
+                        <input id='avatar-upload' type='file' onChange={ savePhoto } />
+                        </div>
+                     : null}
                 </div>
             </div>
             <ProfileStatus isOwner={props.isOwner}
                 status={props.status} updateUserStatus={props.updateUserStatus} />
+            <ProfileInfo user={props.user} isOwner={props.isOwner}/>
         </div>
     );
 }
