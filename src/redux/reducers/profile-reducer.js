@@ -5,6 +5,7 @@ const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
 const SET_PROFILE_USER = 'SET_PROFILE_USER';
 const SET_USER_STATUS = 'SET_USER_STATUS';
 const SET_USER_AVATAR = 'SET_USER_AVATAR';
+const SET_USER_INFO = 'UPDATE_USER_INFO';
 
 let initialState = {
     posts: [
@@ -54,6 +55,9 @@ const profileReducer = (state = initialState, action) => {
         case SET_USER_AVATAR:
             return {...state, user: {...state.user, photos: action.file}}
 
+        case SET_USER_INFO:
+            return {...state, user: {...action.user, photos: state.user.photos}}
+
         default:
             return state;
     }
@@ -65,6 +69,7 @@ export const updateNewPostTextActionCreator = (text) =>
 export const setProfileUser = (user) => ({ type: SET_PROFILE_USER, user })
 export const setUserStatus = (status) => ({ type: SET_USER_STATUS, status })
 export const setUserAvatar = (file) => ({ type: SET_USER_AVATAR, file })
+const setUserInfo = (user) => ({type: SET_USER_INFO, user})
 
 
 export const getUserProfileThunk = (userId) => async (dispatch) => {
@@ -87,6 +92,13 @@ export const saveAvatar = (file) => async (dispatch) => {
     let data = await profileAPI.saveAvatar(file)
     if (data.resultCode === 0) {
         dispatch(setUserAvatar(data.data.photos))
+    }
+}
+
+export const saveUserInfo = (user) => async (dispatch) => {
+    let data = await profileAPI.updateUserInfo(user)
+    if (data.resultCode === 0) {
+        dispatch(setUserInfo(user));
     }
 }
 

@@ -10,7 +10,7 @@ const ProfileInfo = (props) => {
             <div className={styles.profile_info}>
                 <div className={styles.job_block}>
                     Looking for a job? {props.user.lookingForAJob ? 'Yes!' : 'No!'}
-                    <br />
+                    <br /> <br />
                     {props.user.lookingForAJobDescription || null}
                 </div>
                 <br />
@@ -18,14 +18,11 @@ const ProfileInfo = (props) => {
                     My Contacts:
                     <br />
                     <ul>
-                        <li>github: {props.user.contacts.github || '-'}</li>
-                        <li>vk: {props.user.contacts.vk || '-'}</li>
-                        <li>facebook: {props.user.contacts.facebook || '-'}</li>
-                        <li>instagram: {props.user.contacts.instagram || '-'}</li>
-                        <li>twitter: {props.user.contacts.twitter || '-'}</li>
-                        <li>website: {props.user.contacts.website || '-'}</li>
-                        <li>youtube: {props.user.contacts.youtube || '-'}</li>
-                        <li>mainLink: {props.user.contacts.mainLink || '-'}</li>
+                        {
+                            Object.entries(props.user.contacts).map((entry) => {
+                                return <li key={entry[0]}>{entry[0]}: {entry[1] || '-'}</li>
+                            })
+                        }
                     </ul>
                 </div>
             </div>

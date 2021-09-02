@@ -41,6 +41,10 @@ export const profileAPI = {
         formData.append('image', file)
         return instance.put(`/profile/photo`, formData)
         .then(response => response.data)
+    },
+    updateUserInfo(user){
+        return instance.put(`/profile`, {...user})
+        .then(response => response.data)
     }
 }
 

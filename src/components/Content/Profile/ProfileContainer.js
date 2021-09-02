@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import Profile from "./Profile";
-import { getUserProfileThunk, saveAvatar, updateUserStatus } from "../../../redux/reducers/profile-reducer";
+import { getUserProfileThunk, saveAvatar, saveUserInfo, updateUserStatus } from "../../../redux/reducers/profile-reducer";
 import { withRouter } from "react-router-dom";
 import { compose } from "redux";
 
@@ -48,7 +48,8 @@ export default compose(
     connect(mapStateToProps, {
         getUserProfileThunk,
         updateUserStatus,
-        saveAvatar
+        saveAvatar,
+        saveUserInfo
     }),
     withRouter
 )(ProfileContainer)
